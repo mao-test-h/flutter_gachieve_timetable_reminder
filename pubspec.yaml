@@ -21,7 +21,7 @@ dependencies:
   # 状態管理
   provider: ^6.0.1
 
-  # JSON Serualizer
+  # JSON Serializer
   json_annotation: ^4.4.0
 
   # 永続化
