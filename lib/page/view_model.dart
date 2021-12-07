@@ -61,6 +61,7 @@ class MainViewModel extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     _timeTable.clear();
+    _liveDate = DateTime.now();
     debugPrint('クリアしました');
     notifyListeners();
   }
