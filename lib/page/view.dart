@@ -250,14 +250,17 @@ class _MenuWidget extends StatelessWidget {
         ElevatedButton(
           onPressed: () async {
             final ret = await viewModel.onSubmit();
-            if (!ret) {
-              const snackBar = SnackBar(
-                content: Text('Slackへの送信に失敗'),
-                backgroundColor: Colors.red,
-              );
+            final snackBar = ret
+                ? const SnackBar(
+                    content: Text('Slackにリマインダーを設定しました'),
+                    backgroundColor: Colors.green,
+                  )
+                : const SnackBar(
+                    content: Text('Slackへの送信に失敗'),
+                    backgroundColor: Colors.red,
+                  );
 
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            }
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           },
           child: const Text(
             '送信',
@@ -275,6 +278,12 @@ class _MenuWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await viewModel.onSave();
+                const snackBar = SnackBar(
+                  content: Text('設定を保存しました'),
+                  backgroundColor: Colors.green,
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text(
                 '保存',
@@ -287,6 +296,12 @@ class _MenuWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await viewModel.clearLive();
+                const snackBar = SnackBar(
+                  content: Text('設定を消去しました'),
+                  backgroundColor: Colors.green,
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text(
                 'クリア',
